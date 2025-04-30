@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoElegance - By Rekonull</title>
+    <title>By Rekonull</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Хедер */
+       
         .header {
             padding: 1.5rem 5%;
             position: fixed;
@@ -137,7 +137,7 @@
             transition: var(--transition);
         }
 
-        /* Герой секция */
+        
         .hero {
             height: 100vh;
             display: flex;
@@ -188,7 +188,7 @@
             margin-right: auto;
         }
 
-        /* Секция каталога */
+       
         .catalog {
             padding: 8rem 0;
             background: rgba(255,255,255,0.03);
@@ -280,7 +280,7 @@
             background: rgba(212, 175, 55, 0.3);
         }
 
-        /* Секция "О нас" */
+        
         .about {
             padding: 8rem 5%;
             background: linear-gradient(45deg, rgba(10,10,10,0.95), rgba(26,26,26,0.9)),
@@ -317,7 +317,7 @@
             opacity: 0.9;
         }
 
-        /* Секция сервисов */
+       
         .services {
             padding: 8rem 5%;
             background: rgba(0,0,0,0.7);
@@ -619,7 +619,7 @@
                     <a href="#">Сертификаты</a>
                 </div>
                 <div class="copyright">
-                    © 2023 ChronoElegance. Все права защищены
+                    © 2025 ChronoElegance. Все права защищены
                 </div>
             </div>
         </div>
@@ -994,7 +994,7 @@
                 {model: "Jaeger-LeCoultre Hybris Mechanica", price: "$2,500,000", image: "images/wathc6.jpg"}
             ];
 
-            // Мобильное меню
+            
             menuToggle.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 menuToggle.style.transform = mobileMenu.classList.contains('active') 
@@ -1002,7 +1002,7 @@
                     : 'rotate(0)';
             });
 
-            // Плавная прокрутка
+            
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1019,7 +1019,7 @@
                 });
             });
 
-            // Генерация карточек
+            
             const watchGrid = document.querySelector('.watch-grid');
             watchesData.forEach((watch, index) => {
                 const card = document.createElement('div');
@@ -1035,7 +1035,7 @@
                 watchGrid.appendChild(card);
             });
 
-            // Анимации при скролле
+           
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px'
@@ -1053,7 +1053,7 @@
                 animateOnScroll.observe(el);
             });
 
-            // Параллакс
+            
             let isTouch = 'ontouchstart' in window;
             if (!isTouch) {
                 document.addEventListener('mousemove', (e) => {
@@ -1064,7 +1064,7 @@
                 });
             }
 
-            // Запрет контекстного меню на изображениях
+           
             document.querySelectorAll('.watch-image').forEach(img => {
                 img.addEventListener('contextmenu', (e) => e.preventDefault());
             });
