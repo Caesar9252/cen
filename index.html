@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoElegance - By Rekonull</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Хедер */
+        .header {
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26,26,26,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 3px;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            position: relative;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            z-index: 999;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--light);
+            text-decoration: none;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        /* Герой секция */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4)),
+                        url('https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Секция каталога */
+        .catalog {
+            padding: 8rem 0;
+            background: rgba(255,255,255,0.03);
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .watch-card {
+            background: #1E1E1E;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .watch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .watch-image {
+            height: 550px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .watch-card:hover .watch-image {
+            transform: scale(1.03);
+        }
+
+        .watch-info {
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            background: linear-gradient(180deg, rgba(30,30,30,0.9), #1A1A1A);
+        }
+
+        .watch-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            min-height: 3.5em;
+        }
+
+        .watch-price {
+            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .watch-price::before {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        /* Секция "О нас" */
+        .about {
+            padding: 8rem 5%;
+            background: linear-gradient(45deg, rgba(10,10,10,0.95), rgba(26,26,26,0.9)),
+                        url('https://images.unsplash.com/photo-1583997054031-3a899b94363f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .text-columns {
+            columns: 2;
+            column-gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .text-columns p {
+            margin-bottom: 1.5rem;
+            text-indent: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Секция сервисов */
+        .services {
+            padding: 8rem 5%;
+            background: rgba(0,0,0,0.7);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: rgba(255,255,255,0.03);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.05));
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .service-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Адаптация */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .watch-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 100px 5% 0;
+                background-attachment: scroll;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .watch-image {
+                height: 350px;
+            }
+            
+            .text-columns {
+                columns: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">ChronoElegance</a>
+            <div class="nav-links">
+                <a href="#catalog">Коллекция</a>
+                <a href="#about">О нас</a>
+                <a href="#services">Сервис</a>
+                <a href="#contact">Контакты</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#catalog">Коллекция</a>
+            <a href="#about">О нас</a>
+            <a href="#services">Сервис</a>
+            <a href="#contact">Контакты</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Искусство Времени</h1>
+            <p>Эксклюзивные часовые механизмы с 1845 года</p>
+        </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+        <h2 class="section-title">Эксклюзивная Коллекция</h2>
+        <div class="watch-grid"></div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-content">
+            <h2 class="section-title">О Мануфактуре</h2>
+            <div class="text-columns">
+                <p>Основанный в 1845 году в Москве, ChronoElegance воплощает многовековые традиции часового искусства. Каждый механизм собирается вручную мастерами с 20-летним опытом.</p>
+                <p>Используем только благородные материалы: 18-каратное золото, платину и редкие метеоритные сплавы. Ограниченные серии от 5 до 50 экземпляров.</p>
+                <p>Современные технологии сочетаются с традиционными методами гравировки. Каждое изделие проходит 347 этапов контроля качества.</p>
+                <p>Эксклюзивные модели создаются в сотрудничестве с известными художниками и дизайнерами мирового уровня.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-content">
+            <h2 class="section-title">Эксклюзивный Сервис</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <h3>Пожизненная Гарантия</h3>
+                    <p>Бесплатное обслуживание и ремонт в течение всего срока эксплуатации</p>
+                </div>
+                <div class="service-item">
+                    <h3>Персональный Консьерж</h3>
+                    <p>Круглосуточная поддержка владельцев наших часов</p>
+                </div>
+                <div class="service-item">
+                    <h3>Индивидуальное Производство</h3>
+                    <p>Создание уникальных моделей по вашим эскизам</p>
+                </div>
+                <div class="service-item">
+                    <h3>Инвестиционное Сопровождение</h3>
+                    <p>Экспертные консультации по коллекционированию</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-diamond-grid">
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">Chrono</span>
+                        <div class="logo-icon">
+                            <div class="watch-hands">
+                                <div class="hour-hand"></div>
+                                <div class="minute-hand"></div>
+                            </div>
+                        </div>
+                        <span class="logo-text">Elegance</span>
+                    </div>
+                    <div class="footer-slogan">
+                        <p>Мастерство, отмеряющее вечность</p>
+                        <div class="decorative-line"></div>
+                    </div>
+                </div>
+    
+                <div class="footer-grid">
+                    <div class="footer-column animate">
+                        <h4 class="column-title">Навигация</h4>
+                        <ul class="footer-menu">
+                            <li><a href="#catalog">
+                                <span class="menu-decor"></span>
+                                <span class="menu-text">Коллекция</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a></li>
+                            <li><a href="#about">
+                                <span class="menu-decor"></span>
+                                <span class="menu-text">О мануфактуре</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a></li>
+                            <li><a href="#services">
+                                <span class="menu-decor"></span>
+                                <span class="menu-text">Эксклюзивный сервис</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a></li>
+                            <li><a href="#contact">
+                                <span class="menu-decor"></span>
+                                <span class="menu-text">Персональный консьерж</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer-column animate" style="animation-delay: 0.2s">
+                        <h4 class="column-title">Контакты</h4>
+                        <div class="contact-card">
+                            <div class="contact-map">
+                                <div class="map-pin">
+                                    <div class="pin-circle"></div>
+                                    <div class="pin-beam"></div>
+                                </div>
+                                <p>Сделано разработчиком Rekonull</p>
+                            </div>
+                            <div class="contact-info">
+                                <a href="tel:+41227071234" class="contact-link">
+                                    <i class="fas fa-phone"></i>
+                                    +7 999 111 22 33
+                                </a>
+                                <a href="mailto:concierge@chronoelegance.ch" class="contact-link">
+                                    <i class="fas fa-envelope"></i>
+                                    concierge@chronoelegnc.ch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="footer-column animate" style="animation-delay: 0.4s">
+                        <h4 class="column-title">Подписка</h4>
+                        <form class="subscription-form">
+                            <p class="form-description">Получайте эксклюзивные предложения и новости первыми</p>
+                            <div class="form-group">
+                                <input type="email" placeholder="Ваш email" required>
+                                <button type="submit">
+                                    <span>Подписаться</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="social-links">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                                <span class="icon-tooltip">Instagram</span>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="icon-tooltip">Facebook</span>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                                <span class="icon-tooltip">YouTube</span>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span class="icon-tooltip">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <div class="legal-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Сертификаты</a>
+                </div>
+                <div class="copyright">
+                    © 2023 ChronoElegance. Все права защищены
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+    .footer {
+        background: linear-gradient(45deg, #0a0a0a, #171717);
+        padding: 8rem 5% 4rem;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+    }
+    
+    .footer-diamond-grid {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0.1;
+    }
+    
+    .diamond {
+        width: 40px;
+        height: 40px;
+        background: var(--gold);
+        transform: rotate(45deg);
+        animation: diamondGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes diamondGlow {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.05; }
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .logo-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: var(--gold);
+        letter-spacing: 3px;
+    }
+    
+    .logo-icon {
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        position: relative;
+        background: rgba(212, 175, 55, 0.05);
+    }
+    
+    .watch-hands {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+    
+    .hour-hand,
+    .minute-hand {
+        position: absolute;
+        background: var(--gold);
+        left: 48%;
+        transform-origin: bottom;
+    }
+    
+    .hour-hand {
+        width: 2px;
+        height: 20px;
+        top: 10px;
+        animation: hourRotate 36s linear infinite;
+    }
+    
+    .minute-hand {
+        width: 2px;
+        height: 25px;
+        top: 5px;
+        animation: minuteRotate 24s linear infinite;
+    }
+    
+    @keyframes hourRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes minuteRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .footer-slogan {
+        position: relative;
+        margin-bottom: 4rem;
+    }
+    
+    .footer-slogan p {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .footer-slogan p::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 1.5rem;
+        height: 1px;
+        background: var(--gold);
+    }
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .column-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: var(--gold);
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    
+    .column-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 1px;
+        background: var(--gold);
+    }
+    
+    .footer-menu li {
+        margin-bottom: 1.2rem;
+    }
+    
+    .footer-menu a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--light);
+        text-decoration: none;
+        padding: 0.8rem 1rem;
+        background: rgba(255,255,255,0.02);
+        border-radius: 8px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .menu-decor {
+        width: 5px;
+        height: 100%;
+        background: var(--gold);
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: scaleY(0);
+        transition: var(--transition);
+    }
+    
+    .footer-menu a:hover .menu-decor {
+        transform: scaleY(1);
+    }
+    
+    .footer-menu a:hover {
+        background: rgba(212, 175, 55, 0.05);
+        transform: translateX(10px);
+    }
+    
+    .subscription-form {
+        background: rgba(255,255,255,0.03);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    
+    .form-group {
+        position: relative;
+        margin-top: 1.5rem;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        color: var(--light);
+        border-radius: 8px;
+        padding-right: 120px;
+    }
+    
+    .form-group button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--gold);
+        color: var(--dark);
+        border: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+    }
+    
+    .form-group button:hover {
+        background: #c5a230;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+    
+    .social-icon::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--gold);
+        clip-path: circle(0% at 50% 50%);
+        transition: var(--transition);
+    }
+    
+    .social-icon:hover::before {
+        clip-path: circle(70% at 50% 50%);
+    }
+    
+    .social-icon i {
+        position: relative;
+        z-index: 1;
+        transition: var(--transition);
+    }
+    
+    .social-icon:hover i {
+        color: var(--dark);
+    }
+    
+    .icon-tooltip {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--gold);
+        color: var(--dark);
+        padding: 0.3rem 1rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: var(--transition);
+        white-space: nowrap;
+    }
+    
+    .social-icon:hover .icon-tooltip {
+        opacity: 1;
+        top: -40px;
+    }
+    
+    .footer-bottom {
+        margin-top: 5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 3rem;
+        text-align: center;
+    }
+    
+    .legal-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .legal-links a {
+        color: var(--light);
+        text-decoration: none;
+        font-size: 0.9rem;
+        position: relative;
+    }
+    
+    .legal-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: var(--transition);
+    }
+    
+    .legal-links a:hover::after {
+        width: 100%;
+    }
+    
+    .copyright {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-top: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-logo {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .footer-menu a {
+            padding: 0.8rem;
+        }
+        
+        .form-group button {
+            position: static;
+            transform: none;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .form-group input {
+            padding-right: 1rem;
+        }
+    }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const watchesData = [
+                {model: "Patek Philippe Grandmaster Chime", price: "$2,500,000", image: "images/watch1.jpg"},
+                {model: "A.Lange & Söhne 1815 Tourbillon", price: "$495,000", image: "images/watch2.jpg"},
+                {model: "Vacheron Constantin Tour de l'Île", price: "$1,850,000", image: "images/watch3.jpg"},
+                {model: "Breguet Marie-Antoinette Grande Complication", price: "$30,000,000", image: "images/watch4.jpg"},
+                {model: "Audemars Piguet Royal Oak RD#3", price: "$1,025,000", image: "images/watch5.jpg"},
+                {model: "Jaeger-LeCoultre Hybris Mechanica", price: "$2,500,000", image: "images/wathc6.jpg"}
+            ];
+
+            // Мобильное меню
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                menuToggle.style.transform = mobileMenu.classList.contains('active') 
+                    ? 'rotate(90deg)' 
+                    : 'rotate(0)';
+            });
+
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        if (mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // Генерация карточек
+            const watchGrid = document.querySelector('.watch-grid');
+            watchesData.forEach((watch, index) => {
+                const card = document.createElement('div');
+                card.className = 'watch-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="watch-image" style="background-image: url(${watch.image})"></div>
+                    <div class="watch-info">
+                        <h3>${watch.model}</h3>
+                        <p class="watch-price">${watch.price}</p>
+                    </div>
+                `;
+                watchGrid.appendChild(card);
+            });
+
+            // Анимации при скролле
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const animateOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate, .watch-card').forEach(el => {
+                animateOnScroll.observe(el);
+            });
+
+            // Параллакс
+            let isTouch = 'ontouchstart' in window;
+            if (!isTouch) {
+                document.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 15;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 15;
+                    document.querySelector('.hero').style.transform = 
+                        `translate(${x}px, ${y}px)`;
+                });
+            }
+
+            // Запрет контекстного меню на изображениях
+            document.querySelectorAll('.watch-image').forEach(img => {
+                img.addEventListener('contextmenu', (e) => e.preventDefault());
+            });
+        });
+    </script>
+</body>
+</html>
